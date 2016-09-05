@@ -45,3 +45,9 @@ zenodo fixtures loadlicenses
 
 zenodo_pgdump $ZENODO_PGDUMPS_DIR/zenodo.preload.sql.gz
 # zenodo_pgload $ZENODO_PGDUMPS_DIR/zenodo.preload.sql.gz
+
+# Index licenses, grants and records
+zenodo migration reindex -t od_lic
+zenodo migration reindex -t frdoi
+zenodo migration reindex -t grant
+zenodo index run -c 4 -d
